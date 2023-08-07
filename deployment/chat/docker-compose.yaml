@@ -1,0 +1,18 @@
+version: '3.8'
+networks:
+  ddi_chat_network:
+    driver: bridge
+
+services:
+  chat:
+    image: ddi-chat:latest
+    container_name: chat
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/gcp/creds.json
+      - ES_URL=$ES_URL
+      - PROJECT_ID=$PROJECT_ID
+      - REGION=$REGION
+    networks:
+      - ddi_chat_network
+    volumes:
+      - ./creds.json:/gcp/creds.json

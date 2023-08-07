@@ -1,0 +1,7 @@
+datasets
+deployment/chat/creds.json
+deployment/.env
+deployment/proxy/certs/nginx-server.key
+deployment/proxy/certs/nginx-server.crt
+
+.DS_Store

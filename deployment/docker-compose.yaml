@@ -1,0 +1,28 @@
+version: '3.8'
+networks:
+  ddi_chat_network:
+    driver: bridge
+
+volumes:
+  ddi_chat_es_data:
+
+services:
+  ## Persistence layer
+  # Database
+  vector_database:
+    extends:
+      file: vector-database/docker-compose.yaml
+      service: vector_database
+    restart: always
+
+  chat:
+    extends:
+      file: chat/docker-compose.yaml
+      service: chat
+    restart: always
+  
+  proxy:
+    extends:
+      file: proxy/docker-compose.yaml
+      service: proxy
+    restart: always
